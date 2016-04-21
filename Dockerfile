@@ -1,5 +1,6 @@
 from	ubuntu:14.04
 run	echo 'deb http://us.archive.ubuntu.com/ubuntu/ trusty universe' >> /etc/apt/sources.list
+run     apt-get -y clean
 run	apt-get -y update
 
 run	apt-get -y install software-properties-common &&\
