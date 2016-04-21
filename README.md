@@ -1,4 +1,4 @@
-## Graphite + Carbon + Statsd + Grafana
+## Graphite + Carbon + Statsd + Grafana + Collectd
 
 An all-in-one image running graphite and carbon-cache.
 
@@ -13,7 +13,6 @@ carbon-cache and grafana. Starting this container will expose following ports:
 - `8125`: the statsd UDP port
 - `8126`: the statsd management port
 
-
 You can log into the administrative interface of graphite-web (a Django
 application) with the username `admin` and password `admin`. These passwords can
 be changed through the web interface.
@@ -25,7 +24,6 @@ accessible from anywhere if the host firewall is unconfigured.
 
 All data is stored in the /data folder in the container (graphite metrics and grafana db)
 
-
     docker run -v /data/graphite:/data \
                -e SECRET_KEY='random-secret-key' \
                -p 80:80 \
@@ -35,7 +33,7 @@ All data is stored in the /data folder in the container (graphite metrics and gr
                -p 7002:7002 \
                -p 8125:8125/udp \
                -p 8126:8126 \
-               -d samsaffron/graphite
+               -d staylorx/graphite
 
 ### Technical details
 
@@ -48,9 +46,8 @@ resulting in whisper files of approximately 2.5MiB.
 
 Generate your SECRET_KEY from [here](http://www.miniwebtool.com/django-secret-key-generator/). It is optional but highly recommended.
 
-
 ### Based off
 
 https://github.com/nickstenning/dockerfiles.git
 
-Extended by Sam Saffron
+In turn extended by Sam Saffron, and then extended by Steve Taylor.
