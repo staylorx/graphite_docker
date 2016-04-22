@@ -26,6 +26,7 @@ All data is stored in the /data folder in the container (graphite metrics and gr
 
     docker run -v /data/graphite:/data \
                -e SECRET_KEY='random-secret-key' \
+               -h yourhostname.local
                -p 80:80 \
                -p 3000:3000 \
                -p 2003:2003 \
@@ -33,7 +34,9 @@ All data is stored in the /data folder in the container (graphite metrics and gr
                -p 7002:7002 \
                -p 8125:8125/udp \
                -p 8126:8126 \
-               -d staylorx/graphite
+               -d staylorx/graphite_docker
+
+Note the hostname add. Otherwise the collectd info in graphite takes on the hash and everytime the container is rerun it will create a new ID. This avoids that.
 
 ### Technical details
 
